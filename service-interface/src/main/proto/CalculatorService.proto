@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.github.joaomlneto";
+option java_outer_classname = "CalculatorServiceProto";
+
+service CalculatorService {
+    rpc add(AddRequest) returns (OperationResult);
+    rpc execute(OperationRequest) returns (OperationResult);
+}
+
+enum Operation {
+    ADD = 0;
+    SUB = 1;
+    MUL = 2;
+    DIV = 3;
+}
+
+message AddRequest {
+    int32 a = 1;
+    int32 b = 2;
+}
+
+message OperationRequest {
+    Operation op = 1;
+    int32 a = 2;
+    int32 b = 3;
+}
+
+message OperationResult {
+    int32 result = 1;
+}
